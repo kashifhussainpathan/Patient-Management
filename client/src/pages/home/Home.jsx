@@ -17,7 +17,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <h1>Welcome to NeoG Hospital.</h1>
+      <h1>Welcome to NeoG Hospital</h1>
     </div>
   );
 };
