@@ -1,3 +1,4 @@
+import "./ward.css";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -16,7 +17,7 @@ const WardsList = () => {
   }, []);
 
   return (
-    <div>
+    <div className="wards">
       {showWardForm && (
         <div className="teacherFormModal">
           <div
@@ -29,21 +30,26 @@ const WardsList = () => {
         </div>
       )}
 
-      {wards.map((ward) => {
-        const { _id, wardNumber } = ward;
-        return (
-          <div key={_id}>
-            <Link to={`/wards/${_id}`} state={ward}>
-              <h3>Ward: {wardNumber}</h3>
-            </Link>
-          </div>
-        );
-      })}
-
       <div>
-        <button onClick={() => dispatch(setShowWardForm(true))}>
-          Add Ward
-        </button>
+        <h3>Wards :</h3>
+        <ol>
+          {wards.map((ward) => {
+            const { _id, wardNumber } = ward;
+            return (
+              <li key={_id}>
+                <Link to={`/wards/${_id}`} state={ward}>
+                  Ward: {wardNumber}
+                </Link>
+              </li>
+            );
+          })}
+        </ol>
+
+        <div>
+          <button onClick={() => dispatch(setShowWardForm(true))}>
+            Add Ward
+          </button>
+        </div>
       </div>
     </div>
   );

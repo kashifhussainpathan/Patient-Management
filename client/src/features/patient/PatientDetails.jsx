@@ -26,47 +26,52 @@ const PatientDetails = () => {
   }
 
   return (
-    <div>
-      <ul>
-        <li>
-          Name: <span>{patient.name}</span>
-        </li>
-        <li>
-          Age: <span>{patient.age}</span>
-        </li>
-        <li>
-          Gender: <span>{patient.gender}</span>
-        </li>
-        <li>
-          Medical History: <span>{patient.medicalHistory.join(", ")}</span>
-        </li>
-        <li>
-          Contact: <span>{patient.contact}</span>
-        </li>
-        <li>
-          Ward Number: <span>{patient.ward.wardNumber}</span>
-        </li>
-      </ul>
+    <div className="patientDetails">
+      <div>
+        <h3>{patient.name}'s Details </h3>
 
-      {showPatientForm && (
-        <div className="teacherFormModal">
-          <div
-            className="overlay"
-            onClick={() => dispatch(setShowPatientForm(false))}
-          ></div>
-          <div className="modal">
-            <PatientForm />
+        <ul>
+          <li>
+            Name: <span>{patient.name}</span>
+          </li>
+          <li>
+            Age: <span>{patient.age}</span>
+          </li>
+          <li>
+            Gender: <span>{patient.gender}</span>
+          </li>
+          <li>
+            Medical History: <span>{patient.medicalHistory.join(", ")}</span>
+          </li>
+          <li>
+            Contact: <span>{patient.contact}</span>
+          </li>
+          <li>
+            Ward Number: <span>{patient.ward.wardNumber}</span>
+          </li>
+        </ul>
+
+        {showPatientForm && (
+          <div className="teacherFormModal">
+            <div
+              className="overlay"
+              onClick={() => dispatch(setShowPatientForm(false))}
+            ></div>
+            <div className="modal">
+              <PatientForm />
+            </div>
           </div>
+        )}
+
+        <div className="patientDetails__button">
+          <Link to="/patients">Go Back</Link>
+          <button onClick={() => dispatch(setShowPatientForm(true))}>
+            Edit Patient
+          </button>
+
+          <button onClick={handleDeletePatient}>Delete</button>
         </div>
-      )}
-
-      <button onClick={() => dispatch(setShowPatientForm(true))}>
-        Edit Patient
-      </button>
-
-      <button onClick={handleDeletePatient}>Delete</button>
-
-      <Link to="/patients">Go Back</Link>
+      </div>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import "./home.css";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWards } from "../../features/ward/wardApi";
@@ -15,8 +16,8 @@ const Home = () => {
   }, [status, dispatch]);
 
   return (
-    <div>
-      <h2>Welcome to NeoG Hospital.</h2>
+    <div className="home">
+      <h1>Welcome to NeoG Hospital.</h1>
     </div>
   );
 };

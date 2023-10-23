@@ -1,3 +1,4 @@
+import "./patient.css";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -21,17 +22,29 @@ const PatientsList = () => {
   }, [wards, patients]);
 
   return (
-    <div>
-      {patients.map((patient) => {
-        const { _id, name } = patient;
-        return (
-          <div key={_id}>
-            <Link to={`/patients/${_id}`} state={patient}>
-              <h2>{name}</h2>
-            </Link>
-          </div>
-        );
-      })}
+    <div className="patients">
+      <div>
+        <h3>Patients :</h3>
+
+        <ol>
+          {patients.map((patient) => {
+            const { _id, name } = patient;
+            return (
+              <li key={_id}>
+                <Link to={`/patients/${_id}`} state={patient}>
+                  {name}
+                </Link>
+              </li>
+            );
+          })}
+        </ol>
+
+        <div>
+          <button onClick={() => dispatch(setShowPatientForm(true))}>
+            Add Patient
+          </button>
+        </div>
+      </div>
 
       {showPatientForm && (
         <div className="teacherFormModal">
@@ -44,12 +57,6 @@ const PatientsList = () => {
           </div>
         </div>
       )}
-
-      <div>
-        <button onClick={() => dispatch(setShowPatientForm(true))}>
-          Add Patient
-        </button>
-      </div>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import "./ward.css";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -25,38 +26,42 @@ const WardDetails = () => {
   }
 
   return (
-    <div>
-      <ul>
-        <li>
-          Ward Number: <span>{ward.wardNumber}</span>
-        </li>
-        <li>
-          Capacity: <span>{ward.capacity} patients</span>
-        </li>
-        <li>
-          specialization: <span>{ward.specialization}</span>
-        </li>
-      </ul>
-
-      {showWardForm && (
-        <div className="teacherFormModal">
-          <div
-            className="overlay"
-            onClick={() => dispatch(setShowWardForm(false))}
-          ></div>
-          <div className="modal">
-            <WardForm />
-          </div>
-        </div>
-      )}
-
+    <div className="wardDetails">
       <div>
-        <button onClick={() => dispatch(setShowWardForm(true))}>
-          Edit Ward
-        </button>
+        <h3>Ward {ward.wardNumber}'s Details </h3>
 
-        <button onClick={handleDeleteWard}>Delete</button>
-        <Link to="/wards">Go Back</Link>
+        <ul>
+          <li>
+            Ward Number: <span>{ward.wardNumber}</span>
+          </li>
+          <li>
+            Capacity: <span>{ward.capacity} patients</span>
+          </li>
+          <li>
+            specialization: <span>{ward.specialization}</span>
+          </li>
+        </ul>
+
+        {showWardForm && (
+          <div className="teacherFormModal">
+            <div
+              className="overlay"
+              onClick={() => dispatch(setShowWardForm(false))}
+            ></div>
+            <div className="modal">
+              <WardForm />
+            </div>
+          </div>
+        )}
+
+        <div className="wardDetails__buttons">
+          <Link to="/wards">Go Back</Link>
+          <button onClick={() => dispatch(setShowWardForm(true))}>
+            Edit Ward
+          </button>
+
+          <button onClick={handleDeleteWard}>Delete</button>
+        </div>
       </div>
     </div>
   );

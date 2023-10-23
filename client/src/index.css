@@ -63,6 +63,7 @@ form {
   padding: 1rem;
   gap: 0.5rem;
   border-radius: 10px;
+  border: 2px solid var(--color);
 }
 form button {
   width: 100%;
@@ -91,10 +92,24 @@ option {
   border-radius: 0.5rem;
   outline: none;
   border: 1px solid;
+  resize: none;
 }
 
 ul li span {
   font-weight: 600;
+}
+
+ol {
+  padding-inline-start: 10px;
+}
+
+ol li a,
+ul li a {
+  color: var(--color);
+}
+
+li {
+  font-size: 1.2rem;
 }
 
 /* input::placeholder,
