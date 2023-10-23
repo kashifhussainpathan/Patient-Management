@@ -1,0 +1,42 @@
+[
+  {
+    "name": "John Doe",
+    "age": 35,
+    "gender": "Male",
+    "medicalHistory": ["Hypertension", "Allergies"],
+    "contact": 5555555555,
+    "ward": "652ed60208490a8182ade769"
+  },
+  {
+    "name": "Jane Smith",
+    "age": 45,
+    "gender": "Female",
+    "medicalHistory": ["Diabetes", "Asthma"],
+    "contact": 5555555556,
+    "ward": "652ed60208490a8182ade767"
+  },
+  {
+    "name": "Alex Taylor",
+    "age": 28,
+    "gender": "Non-binary",
+    "medicalHistory": ["Migraines", "Anxiety"],
+    "contact": 5555555557,
+    "ward": "652ed60208490a8182ade765"
+  },
+  {
+    "name": "Sam Brown",
+    "age": 50,
+    "gender": "Male",
+    "medicalHistory": ["Arthritis", "High Cholesterol"],
+    "contact": 5555555558,
+    "ward": "652ed60208490a8182ade763"
+  },
+  {
+    "name": "Taylor Davis",
+    "age": 22,
+    "gender": "Non-binary",
+    "medicalHistory": ["Allergies", "Depression"],
+    "contact": 5555555559,
+    "ward": "652ed60108490a8182ade760"
+  }
+]
