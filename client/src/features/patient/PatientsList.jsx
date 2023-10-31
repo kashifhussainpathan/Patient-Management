@@ -4,22 +4,19 @@ import { Link } from "react-router-dom";
 
 import PatientForm from "./PatientForm";
 import { fetchPatients } from "./patientApi";
-import { fetchWards } from "../ward/wardApi";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowPatientForm } from "./patientSlice";
 
 const PatientsList = () => {
   const dispatch = useDispatch();
-  const { wards } = useSelector(({ wards }) => wards);
-  const { patients } = useSelector(({ patients }) => patients);
+  const { patients, status } = useSelector(({ patients }) => patients);
   const { showPatientForm } = useSelector(({ patients }) => patients);
 
   useEffect(() => {
-    if (patients.length <= 0 && patients.length <= 0) {
+    if (status === "idle") {
       dispatch(fetchPatients());
-      dispatch(fetchWards());
     }
-  }, [wards, patients]);
+  }, [status, dispatch]);
 
   return (
     <div className="patients">
@@ -27,16 +24,18 @@ const PatientsList = () => {
         <h3>Patients :</h3>
 
         <ol>
-          {patients.map((patient) => {
-            const { _id, name } = patient;
-            return (
-              <li key={_id}>
-                <Link to={`/patients/${_id}`} state={patient}>
-                  {name}
-                </Link>
-              </li>
-            );
-          })}
+          {status === "loading"
+            ? "loading..."
+            : patients.map((patient) => {
+                const { _id, name } = patient;
+                return (
+                  <li key={_id}>
+                    <Link to={`/patients/${_id}`} state={patient}>
+                      {name}
+                    </Link>
+                  </li>
+                );
+              })}
         </ol>
 
         <div>

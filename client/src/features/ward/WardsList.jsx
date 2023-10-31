@@ -9,12 +9,14 @@ import { useDispatch, useSelector } from "react-redux";
 
 const WardsList = () => {
   const dispatch = useDispatch();
-  const wards = useSelector((state) => state.wards.wards);
+  const { wards, status } = useSelector(({ wards }) => wards);
   const { showWardForm } = useSelector(({ wards }) => wards);
 
   useEffect(() => {
-    dispatch(fetchWards());
-  }, []);
+    if (status === "idle") {
+      dispatch(fetchWards());
+    }
+  }, [status, dispatch]);
 
   return (
     <div className="wards">
@@ -33,16 +35,18 @@ const WardsList = () => {
       <div>
         <h3>Wards :</h3>
         <ol>
-          {wards.map((ward) => {
-            const { _id, wardNumber } = ward;
-            return (
-              <li key={_id}>
-                <Link to={`/wards/${_id}`} state={ward}>
-                  Ward: {wardNumber}
-                </Link>
-              </li>
-            );
-          })}
+          {status === "loading"
+            ? "loading..."
+            : wards.map((ward) => {
+                const { _id, wardNumber } = ward;
+                return (
+                  <li key={_id}>
+                    <Link to={`/wards/${_id}`} state={ward}>
+                      Ward: {wardNumber}
+                    </Link>
+                  </li>
+                );
+              })}
         </ol>
 
         <div>

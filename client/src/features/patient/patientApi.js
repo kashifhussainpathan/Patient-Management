@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const API_URL = "http://localhost:4000/patients";
+const API_URL = "https://patient-management-vd6y.onrender.com/patients";
 
 const fetchPatients = createAsyncThunk("patients/fetchPatients", async () => {
   const response = await axios.get(API_URL);
