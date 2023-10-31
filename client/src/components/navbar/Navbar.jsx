@@ -15,6 +15,13 @@ const Navbar = () => {
         <NavLink to="/patients">Patients</NavLink>
         <NavLink to="/wards">Wards</NavLink>
         <NavLink to="/hospital">Hospital</NavLink>
+        <a
+          href="https://github.com/kashifhussainpathan/Patient-Management"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Github
+        </a>
       </div>
     </div>
   );
