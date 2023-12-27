@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import PatientForm from "./PatientForm";
-import { deletePatientAsync } from "./patientApi";
+import { deletePatientAsync, fetchPatients } from "./patientApi";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowPatientForm } from "./patientSlice";
 
@@ -19,6 +19,7 @@ const PatientDetails = () => {
   const handleDeletePatient = () => {
     dispatch(deletePatientAsync(patient._id));
     navigate("/patients");
+    dispatch(fetchPatients());
   };
 
   if (!patient) {

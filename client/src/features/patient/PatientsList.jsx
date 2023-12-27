@@ -6,6 +6,7 @@ import PatientForm from "./PatientForm";
 import { fetchPatients } from "./patientApi";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowPatientForm } from "./patientSlice";
+import { fetchWards } from "../ward/wardApi";
 
 const PatientsList = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const PatientsList = () => {
   useEffect(() => {
     if (status === "idle") {
       dispatch(fetchPatients());
+      dispatch(fetchWards());
     }
   }, [status, dispatch]);
 

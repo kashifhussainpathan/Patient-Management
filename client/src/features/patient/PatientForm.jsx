@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { addPatientAsync, updatePatientAsync } from "./patientApi";
+import { setShowPatientForm } from "./patientSlice";
 
 const PatientForm = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const PatientForm = () => {
           updatedPatient: patientInfo,
         })
       );
+      dispatch(setShowPatientForm(false));
     } else {
       dispatch(
         addPatientAsync({
@@ -44,6 +46,8 @@ const PatientForm = () => {
           ward: patientInfo.ward ? patientInfo.ward : wards[0]._id,
         })
       );
+
+      dispatch(setShowPatientForm(false));
     }
   };
 
